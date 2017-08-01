@@ -1,3 +1,4 @@
+<% @group = Etc.getgrgid(Etc.getpwnam(@user).gid).name %>
 [Unit]
 Description=Advanced key-value store
 After=network.target
@@ -5,7 +6,6 @@ Description=<%= @name %>
 
 [Service]
 Type=forking
-Environment=<%= @environment.map {|key, val| %Q{"#{key}=#{val}"} }.join(' ') %>
 ExecStart=<%= @command %>
 ExecStop=/bin/kill -s <%= @stop_signal %> $MAINPID
 PIDFile=/var/run/redis/redis-server.pid

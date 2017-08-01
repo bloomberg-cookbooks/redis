@@ -183,8 +183,8 @@ dbfilename <%= @new_resource.dbfilename %>
 # Also the Append Only File will be created inside this directory.
 #
 # Note that you must specify a directory here, not a file name.
-<% if @new_resource.directory %>
-dir <%= @new_resource.directory %>
+<% if @new_resource.service_home %>
+dir <%= @new_resource.service_home %>
 <% end %>
 
 ################################# REPLICATION #################################

@@ -2,7 +2,7 @@ describe service('redis') do
   it { should be_enabled }
   it { should be_installed }
   it { should be_running }
-end
+end unless (os[:family] == 'redhat' && os[:version].to_i == 6)
 
 describe processes('redis-server') do
   its('list.length') { should eq 1 }
