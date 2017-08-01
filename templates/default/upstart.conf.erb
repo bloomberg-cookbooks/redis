@@ -1,0 +1,15 @@
+<% @group = Etc.getgrgid(Etc.getpwnam(@user).gid).name %>
+
+description		"Redis - Advanced key-value store"
+
+setuid <%= @user %>
+setgid <%= @group %>
+chdir <%= @directory %>
+
+start on (local-filesystems and net-device-up IFACE!=lo)
+stop on runlevel [!2345]
+
+expect fork
+respawn
+
+exec <%= @command %>
